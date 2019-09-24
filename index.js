@@ -5,7 +5,7 @@ var inquirer = require("inquirer");
 var myGlobal = {
     wordOptions: ["defenestrate", "palimpsest", "crapulence", "gobbledygook", "elephant", "peacock", "thunderstorm", "bazaar", "banana", "pavise"],
 
-    chosenWord: null,
+    chosenWord: {},
 
     alreadyGuessed: [],
 
@@ -18,6 +18,8 @@ var myGlobal = {
 
 function chooseWord() {
     myGlobal.guessesRemaining = 12;
+
+    myGlobal.alreadyGuessed = [];
 
     var wordChoice = Math.floor(Math.random() * myGlobal.wordOptions.length);
 
@@ -71,6 +73,8 @@ function guessingTime() {
 
                 if (!redundantGuess) {
                     var checkGuess = myGlobal.chosenWord.guessLetter(answers.letterGuessed);
+
+                    myGlobal.alreadyGuessed.push(answers.letterGuessed);
 
                     if (!checkGuess) {
                         console.log("Sorry. The word doesn't contain that letter.")
