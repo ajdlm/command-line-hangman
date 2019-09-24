@@ -10,18 +10,18 @@ module.exports = function (x) {
     this.wordDisplay = function () {
         var displayWord = "";
 
-        for (var i = 0; i < letterArray.length; i++) {
-            displayWord += letterArray[i].letterDisplay();
+        for (var i = 0; i < this.letterArray.length; i++) {
+            displayWord += this.letterArray[i].letterDisplay();
         };
 
         return displayWord;
     };
-    
+
     this.guessLetter = function(y) {
         var correctGuess = false;
 
-        for (var j = 0; j < letterArray.length; i++) {
-            var evalGuess = letterArray[i].guessLetter(y);
+        for (var j = 0; j < this.letterArray.length; i++) {
+            var evalGuess = this.letterArray[i].guessLetter(y);
 
             if ((evalGuess === true) && (correctGuess === false)) {
                 correctGuess = true;
