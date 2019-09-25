@@ -46,7 +46,7 @@ A game of Hangman played from the bash command line.
 
 ### Example
 
-[![](https://img.youtube.com/vi/0_L0_KbDhqA/default.jpg)](https://www.youtube.com/embed/0_L0_KbDhqA)
+[![](https://img.youtube.com/vi/0_L0_KbDhqA/0.jpg)](https://www.youtube.com/embed/0_L0_KbDhqA)
 
 ## Technologies Used
 
