@@ -26,38 +26,40 @@ function chooseWord() {
     myGlobal.chosenWord = new Word(myGlobal.wordOptions[wordChoice]);
 
     myGlobal.wordOptions.splice(wordChoice, 1);
+
+    guessingTime();
 };
 
 function gameOver() {
-    console.log("There are no more words to guess!\n\nYou guessed " + myGlobal.wordVictories + " words correctly!\n\nYou guessed " + myGlobal.wordLosses + " words incorrectly.");
+    console.log("\nThere are no more words to guess!\n\nYou guessed " + myGlobal.wordVictories + " words correctly.\n\nYou guessed " + myGlobal.wordLosses + " words incorrectly.");
 
     if (myGlobal.wordVictories > 5) {
-        console.log("Great job!");
+        console.log("\nGreat job!\n");
     }
 
     else {
-        console.log("Better luck next time.")
+        console.log("\nBetter luck next time.\n")
     };
 };
 
 function guessingTime() {
-    console.log((myGlobal.chosenWord.wordDisplay()) + "\n");
+    console.log(("\n" + myGlobal.chosenWord.wordDisplay()).split("").join(" ") + "\n");
 
     inquirer
         .prompt([
             {
                 type: "input",
-                name: "letterGuessed",
-                message: "Enter a letter to guess."
+                message: "Guess a letter.",
+                name: "letterGuessed"
             }
         ])
         .then(answers => {
             if (answers.letterGuessed.length !== 1) {
-                console.log("Sorry, but you must guess exactly one English letter at a time.");
+                console.log("\nSorry, but you must guess exactly one English letter at a time.");
             }
 
             else if (!((/[a-z]/i).test(answers.letterGuessed))) {
-                console.log("Sorry, but only English letters may be guessed.");
+                console.log("\nSorry, but only English letters may be guessed.");
             }
 
             else {
@@ -65,7 +67,7 @@ function guessingTime() {
 
                 for (var i = 0; i < myGlobal.alreadyGuessed.length; i++) {
                     if (myGlobal.alreadyGuessed[i] === answers.letterGuessed) {
-                        var redundantGuess = true;
+                        redundantGuess = true;
 
                         break;
                     };
@@ -77,19 +79,19 @@ function guessingTime() {
                     myGlobal.alreadyGuessed.push(answers.letterGuessed);
 
                     if (!checkGuess) {
-                        console.log("Sorry. The word doesn't contain that letter.")
+                        console.log("\nSorry. The word doesn't contain that letter.")
 
                         myGlobal.guessesRemaining--;
                     };
                 }
 
                 else {
-                    console.log("Sorry, but you've already tried that letter.");
+                    console.log("\nSorry, but you've already tried that letter.");
                 };
             };
-        });
 
-    shouldWeGuess();
+            shouldWeGuess();
+        });
 };
 
 function shouldGameEnd() {
@@ -103,23 +105,31 @@ function shouldGameEnd() {
 };
 
 function shouldWeGuess() {
-    if ((myGlobal.guessesRemaining < 1) && (myGlobal.wordOptions.length < 1)) {
+    if ((myGlobal.guessesRemaining < 1)) {
+
         myGlobal.wordLosses++;
+
+        console.log("\nSorry. You failed to guess the word.")
 
         shouldGameEnd();
     }
 
-    else if (!((myGlobal.chosenWord.wordDisplay()).contains("_"))) {
+    else if (!((myGlobal.chosenWord.wordDisplay()).includes("_"))) {
+
         myGlobal.wordVictories++;
+
+        console.log("\nYou guessed the word correctly! It was " + myGlobal.chosenWord.wordDisplay() + ".");
 
         shouldGameEnd();
     }
 
     else {
+        console.log("\n" + myGlobal.guessesRemaining + " guesses remaining.");
+
         guessingTime();
     };
 };
 
-chooseWord();
+console.log("\nWelcome to Command Line Hangman!");
 
-guessingTime();
+chooseWord();

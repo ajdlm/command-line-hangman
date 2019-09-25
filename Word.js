@@ -17,14 +17,18 @@ module.exports = function (x) {
         return displayWord;
     };
 
-    this.guessLetter = function(y) {
+    this.guessLetter = function (y) {
         var correctGuess = false;
 
-        for (var j = 0; j < this.letterArray.length; i++) {
-            var evalGuess = this.letterArray[i].guessLetter(y);
+        for (var j = 0; j < this.letterArray.length; j++) {
+            if (!this.letterArray[j].guessed) {
+                this.letterArray[j].guessLetter(y);
 
-            if ((evalGuess === true) && (correctGuess === false)) {
-                correctGuess = true;
+                var evalGuess = this.letterArray[j].guessed;
+
+                if ((evalGuess === true) && (correctGuess === false)) {
+                    correctGuess = true;
+                };
             };
         };
 
