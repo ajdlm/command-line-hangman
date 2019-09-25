@@ -46,7 +46,7 @@ A game of Hangman played from the bash command line.
 
 ### Example
 
-[Watch a video of the game being played here.](/assets/videos/command-line-hangman.mp4)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0_L0_KbDhqA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Technologies Used
 
