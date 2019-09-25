@@ -46,7 +46,7 @@ A game of Hangman played from the bash command line.
 
 ### Example
 
-![](/assets/videos/command-line-hangman.mp4)
+[Watch a video of the game being played here.](/assets/videos/command-line-hangman.mp4)
 
 ## Technologies Used
 
