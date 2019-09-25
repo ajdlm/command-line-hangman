@@ -46,11 +46,7 @@ A game of Hangman played from the bash command line.
 
 ### Example
 
-<video width="320" height="240" controls>
-  <source src="/assets/videos/command-line-hangman.mov" type="video/mov">
-</video>
-
-![](/assets/videos/command-line-hangman.mov)
+![](/assets/videos/command-line-hangman.mp4)
 
 ## Technologies Used
 
